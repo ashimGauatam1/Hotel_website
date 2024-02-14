@@ -1,0 +1,51 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock title %}
+
+
+{% block body %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success {{ message.tags }} alert-dismissible fade show mb-0" role="alert">
+  <strong> {{ message }}</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="alert alert-warning alert-dismissible fade show mb-0" role="alert">
+  <strong>Please provide valid contact we will contact you shortly....</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div class="container-fluid px-0 my-0 py-0">
+<img src='https://img.freepik.com/premium-photo/one-two-young-hotel-receptionists-standing-by-counter-looking-touchpad-display-consulting-client-phone-against-colleague_274679-18500.jpg?w=740' style="height:78vh; width:100%;">
+<div class="container my-2 text-center ">
+  <h3>Contact Us </h3>
+</div>
+<div class="justify-content-center ml-25 h-75 w-100 px-5">
+<form class="row g-5  py-5" method="post" action="/contact">
+  {% csrf_token %}
+  <div class="col-md-4">
+    <label for="validationDefault01" class="form-label"> Name</label>
+    <input type="text" name="First" class="form-control" id="validationDefault01" placeholder="Enter Your First Name" required>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault03" class="form-label">E-mail</label>
+    <input type="text" name="email"  class="form-control"placeholder="Enter Your Email" id="validationDefault03" required>
+  </div>
+  <div class="col-md-3 w-75 h-100">
+    <label for="validationDefault05" class="form-label">Message for Us</label>
+    <input type="text" class="form-control " name="Message"  placeholder="Enter Your Message to motivate Us" id="validationDefault05" required>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+</div>
+</div>
+</form>
+
+
+{% endblock body %}
